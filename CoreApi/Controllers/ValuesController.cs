@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using CoreApi.Tools;
+using CoreApi.DTO;
 
 namespace CoreApi.Controllers
 {
@@ -12,9 +14,16 @@ namespace CoreApi.Controllers
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public JsonResult Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {                
+                return new { id="111",name="Sampan Lee",time=DateTime.Now}.ToJsonResult();
+            }
+            catch (Exception ex)
+            {
+                return ResultHelper.ToExceptionResult(300,ex.Message);
+            }
         }
 
         // GET api/values/5
