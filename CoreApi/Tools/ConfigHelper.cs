@@ -33,16 +33,6 @@ namespace CoreApi.Tools
                 .Value;
             return obj;
         }
-        //public static Config GetSection()
-        //{
-        //    var obj = new ServiceCollection()
-        //        .AddOptions()
-        //        .Configure<Config>(Configuration.)
-        //        .BuildServiceProvider()
-        //        .GetService<IOptions<T>>()
-        //        .Value;
-        //    return obj;
-        //}
 
         public static string GetSection(string key)
         {
