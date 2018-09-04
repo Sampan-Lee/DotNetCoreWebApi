@@ -14,12 +14,14 @@ namespace CoreApi.Tools
     {
         private readonly static IConfiguration Configuration;
 
+        public readonly static string ConnectionStrings;
         static ConfigHelper()
         {
             Configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.Development.json", optional: true)
+                .AddJsonFile("appsettings.json", optional: true)
                 .Build();
+            ConnectionStrings = Configuration.GetConnectionString("MysqlConnection");
         }
 
         public static T GetSection<T>(string key) where T : class, new()

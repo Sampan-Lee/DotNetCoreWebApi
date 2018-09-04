@@ -13,14 +13,19 @@ namespace CoreApi.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private DBContext dBContext;
+        public ValuesController(DBContext context)
+        {
+            dBContext = context;            
+        }
         // GET api/values
         [HttpGet]
         public JsonResult Get()
         {
             try
             {
-                var LogLevel= ConfigHelper.GetSection<LogLevel>("Logging:LogLevel");
-                return LogLevel.Default.ToJsonResult();
+                var user = dBContext.User.ToList();
+                return user.ToJsonResult();
             }
             catch (Exception ex)
             {
