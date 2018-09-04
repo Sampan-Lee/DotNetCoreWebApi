@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CoreApi.Tools;
 using CoreApi.DTO;
+using CoreApi.Models;
 
 namespace CoreApi.Controllers
 {
@@ -17,8 +18,9 @@ namespace CoreApi.Controllers
         public JsonResult Get()
         {
             try
-            {                
-                return new { id="111",name="Sampan Lee",time=DateTime.Now}.ToJsonResult();
+            {
+                var LogLevel= ConfigHelper.GetSection<LogLevel>("Logging:LogLevel");
+                return LogLevel.Default.ToJsonResult();
             }
             catch (Exception ex)
             {
