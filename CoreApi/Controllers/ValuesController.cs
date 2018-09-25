@@ -24,8 +24,8 @@ namespace CoreApi.Controllers
         {
             try
             {
-                RabbitMQHelper.Producing();
-                return "user".ToJsonResult();
+                LogHelper.LogInformation("aaaa");
+                return string.Empty.ToJsonResult();
             }
             catch (Exception ex)
             {
