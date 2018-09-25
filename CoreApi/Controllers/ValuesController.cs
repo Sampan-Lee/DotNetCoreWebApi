@@ -14,9 +14,9 @@ namespace CoreApi.Controllers
     public class ValuesController : ControllerBase
     {
         private DBContext dBContext;
-        public ValuesController(DBContext context)
+        public ValuesController(DBContext _dBContext)
         {
-            dBContext = context;            
+            dBContext = _dBContext;            
         }
         // GET api/values
         [HttpGet]
@@ -24,8 +24,8 @@ namespace CoreApi.Controllers
         {
             try
             {
-                var user = dBContext.User.ToList();
-                return user.ToJsonResult();
+                RabbitMQHelper.Producing();
+                return "user".ToJsonResult();
             }
             catch (Exception ex)
             {

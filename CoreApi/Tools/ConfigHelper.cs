@@ -12,7 +12,7 @@ namespace CoreApi.Tools
 {
     public static class ConfigHelper
     {
-        private readonly static IConfiguration Configuration;
+        public readonly static IConfiguration Configuration;
 
         public readonly static string ConnectionStrings;
         static ConfigHelper()
